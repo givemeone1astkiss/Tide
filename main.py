@@ -15,7 +15,7 @@ def main(args):
         test_loss = model.eval(test_x, test_y, args.eval_func)
         print(f"Test loss: {test_loss}")
     elif args.model in DEEP_LEARNING_MODEL:
-        trainer = Trainer(enable_progress_bar=True, max_epochs=args.epochs)
+        trainer = Trainer(enable_progress_bar=True, max_epochs=args.epoch, default_root_dir=f"{args.save_path}/{args.model}")
         trainer.fit(model, peptide_data)
     else:
         raise ValueError("Invalid model name.")
